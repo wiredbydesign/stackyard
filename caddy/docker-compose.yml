@@ -1,0 +1,25 @@
+services:
+  caddy:
+    build: .
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # Cloudflare API token with DNS edit rights for the zone
+      CLOUDFLARE_API_TOKEN:
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - proxy
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  proxy:
+    name: proxy
