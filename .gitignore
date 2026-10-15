@@ -1,0 +1,12 @@
+# Local configuration and credentials; examples remain tracked.
+.env
+.env.*
+!*.example
+**/compose.env
+*.pem
+*.key
+
+# Local service state and backups.
+data/
+backups/
+*.log
